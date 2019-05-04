@@ -33,7 +33,7 @@ public class AcessoController implements Serializable {
         }
         return null;
     }
-    
+
     public String flowLogin() {
         return "/login";
     }
@@ -53,4 +53,7 @@ public class AcessoController implements Serializable {
         return usuarioBe;
     }
 
+    public String flowLogOut() {
+        return "/logout?faces-redirect=true";
+    }
 }
