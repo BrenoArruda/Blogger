@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+
+    <ui:composition template="/WEB-INF/templates/default-template.xhtml">
+        <ui:define name="body">
+
+            <ui:repeat var="post" value="#{indexController.postsVo.listVo}">
+                <div class="post-preview">
+                    <h:form>
+                        <h:commandLink action="#{indexController.flowVisualizarPostCompleto(post.id)}" immediate="true" >
+                            <h2 class="post-title">
+                                <h:outputText value="#{post.titulo}" ></h:outputText>
+                            </h2>
+                        </h:commandLink>
+                    </h:form>
+                    <h5 class="post-meta">
+                        <h:outputText value="#{post.resumo}" ></h:outputText>
+                    </h5>
+
+                    <p> Por <h:outputText value="#{post.autor.nome}"></h:outputText>, Publicado em <h:outputFormat value="#{post.dataPublicacao}"><f:convertDateTime pattern="dd 'de' MMMM 'de' yyyy, 'às' HH:mm " /></h:outputFormat> </p>
+
+                </div>
+                <hr/>
+            </ui:repeat>
+
+        </ui:define>  
+
+    </ui:composition>
+</html>
+
